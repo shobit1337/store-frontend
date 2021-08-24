@@ -51,6 +51,7 @@ const Signup = () => {
                 onChange={handleChange("name")}
                 className="form-control"
                 type="text"
+                value={name}
               />
             </div>
             <div className="form-group">
@@ -59,6 +60,7 @@ const Signup = () => {
                 onChange={handleChange("email")}
                 className="form-control"
                 type="text"
+                value={email}
               />
             </div>
             <div className="form-group">
@@ -67,6 +69,7 @@ const Signup = () => {
                 onChange={handleChange("password")}
                 className="form-control"
                 type="password"
+                value={password}
               />
             </div>
             <button
@@ -81,8 +84,36 @@ const Signup = () => {
     );
   };
 
+  const successMessage = () => (
+    <div className="row">
+      <div className="col-md-6 offset-sm-3 text-left">
+        <div
+          className="alert alert-success"
+          style={{ display: success ? "" : "none" }}
+        >
+          Successfully Registered! Please Click here to{" "}
+          <Link to="/signin">Login</Link>.
+        </div>
+      </div>
+    </div>
+  );
+  const errorMessage = () => (
+    <div className="row">
+      <div className="col-md-6 offset-sm-3 text-left">
+        <div
+          className="alert alert-danger"
+          style={{ display: error ? "" : "none" }}
+        >
+          {error}
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <Base title="Sign up page" description="A page for use to sign up!">
+      {successMessage()}
+      {errorMessage()}
       {signUpForm()}
     </Base>
   );
