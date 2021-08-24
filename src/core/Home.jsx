@@ -7,13 +7,13 @@ const Home = () => {
     <Base title="Home Page" description="This our our home page.">
       <div className="row">
         <div className="col-4">
-          <buttone className="btn btn-success">Test</buttone>
+          <button className="btn btn-success">Test</button>
         </div>
         <div className="col-4">
-          <buttone className="btn btn-success">Test</buttone>
+          <button className="btn btn-success">Test</button>
         </div>
         <div className="col-4">
-          <buttone className="btn btn-success">Test</buttone>
+          <button className="btn btn-success">Test</button>
         </div>
       </div>
       <h1>Home Page</h1>
