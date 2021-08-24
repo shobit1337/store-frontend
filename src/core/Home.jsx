@@ -1,10 +1,24 @@
 import React from "react";
 import "../styles.css";
+import Base from "./Base";
 
-export default function Home() {
+const Home = () => {
   return (
-    <div>
+    <Base title="Home Page" description="This our our home page.">
+      <div className="row">
+        <div className="col-4">
+          <buttone className="btn btn-success">Test</buttone>
+        </div>
+        <div className="col-4">
+          <buttone className="btn btn-success">Test</buttone>
+        </div>
+        <div className="col-4">
+          <buttone className="btn btn-success">Test</buttone>
+        </div>
+      </div>
       <h1>Home Page</h1>
-    </div>
+    </Base>
   );
-}
+};
+
+export default Home;
