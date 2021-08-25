@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper";
 import Base from "../core/Base";
+import { createCategopry } from "./helper/adminapicall";
 
 function AddCategory() {
   const [name, setName] = useState("");
@@ -9,6 +10,37 @@ function AddCategory() {
   const [success, setSuccess] = useState(false);
 
   const { user, token } = isAuthenticated();
+
+  const handleCreate = (event) => {
+    event.preventDefault();
+    setError(false);
+    setSuccess(false);
+
+    //making backend api call
+    // We are passing name as object bcs we are JSON.strinifing it in apicall helper
+    createCategopry(user._id, token, { name }).then((data) => {
+      if (data.error) {
+        setError(true);
+      } else {
+        setError(false);
+        setSuccess(true);
+        setName("");
+      }
+    });
+  };
+
+  const successMessage = () => {
+    if (success) {
+      return <h4 className="text-success">Category Created Successfully!</h4>;
+    }
+  };
+  const errorMessage = () => {
+    if (error) {
+      return (
+        <h4 className="text-danger">Sorry! {name} category already exist.</h4>
+      );
+    }
+  };
 
   const goBackBtn = () => (
     <div className="mt-5">
@@ -31,7 +63,9 @@ function AddCategory() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <button className="btn btn-outline-info">Create</button>
+        <button onClick={handleCreate} className="btn btn-outline-info">
+          Create
+        </button>
       </div>
     </form>
   );
@@ -44,6 +78,8 @@ function AddCategory() {
     >
       <div className="row bg-white rounded">
         <div className="col-md-8 offset-md-2">
+          {successMessage()}
+          {errorMessage()}
           {categoryForm()}
           {goBackBtn()}
         </div>
