@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper";
 import Base from "../core/Base";
-import { createCategopry } from "./helper/adminapicall";
+import { createCategory } from "./helper/adminapicall";
 
 function AddCategory() {
   const [name, setName] = useState("");
@@ -18,7 +18,7 @@ function AddCategory() {
 
     //making backend api call
     // We are passing name as object bcs we are JSON.strinifing it in apicall helper
-    createCategopry(user._id, token, { name }).then((data) => {
+    createCategory(user._id, token, { name }).then((data) => {
       if (data.error) {
         setError(true);
       } else {

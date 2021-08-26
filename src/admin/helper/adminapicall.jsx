@@ -1,6 +1,7 @@
 import { API } from "../../backend";
 
-export const createCategopry = (userId, token, category) => {
+// Create Category
+export const createCategory = (userId, token, category) => {
   return fetch(`${API}/category/create/${userId}`, {
     method: "POST",
     headers: {
