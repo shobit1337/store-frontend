@@ -6,6 +6,10 @@ const Card = ({
   addToCartButton = true,
   removefromCartButton = false,
 }) => {
+  const cardTitle = product ? product.name : "NA";
+  const cardDescription = product ? product.description : "NA";
+  const cardPrice = product ? product.price : "NA";
+
   const showAddToCartButton = () =>
     addToCartButton && (
       <div className="col-12">
@@ -32,13 +36,13 @@ const Card = ({
 
   return (
     <div className="card text-white bg-dark border border-info ">
-      <div className="card-header lead">A photo from pexels</div>
+      <div className="card-header lead">{cardTitle}</div>
       <div className="card-body">
         <ImageHelper product={product} />
         <p className="lead bg-success font-weight-normal text-wrap">
-          this photo looks great
+          {cardDescription}
         </p>
-        <p className="btn btn-success rounded  btn-sm px-4">$ 5</p>
+        <p className="btn btn-success rounded  btn-sm px-4">$ {cardPrice}</p>
         <div className="row">
           {showAddToCartButton()}
           {showRemoveFromCartButton()}
