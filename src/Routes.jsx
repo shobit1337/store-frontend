@@ -4,6 +4,7 @@ import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
 import ManageCategories from "./admin/ManageCategories";
 import ManageProducts from "./admin/ManageProducts";
+import UpdateProduct from "./admin/UpdateProduct";
 import AdminRoutes from "./auth/helper/AdminRoutes";
 import PrivateRoutes from "./auth/helper/PrivateRoutes";
 import Home from "./core/Home";
@@ -35,6 +36,11 @@ const Routes = () => {
           path="/admin/create/product"
           exact
           component={AddProduct}
+        />
+        <AdminRoutes
+          path="/admin/product/update/:productId"
+          exact
+          component={UpdateProduct}
         />
         <AdminRoutes path="/admin/products" exact component={ManageProducts} />
       </Switch>

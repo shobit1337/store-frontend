@@ -55,12 +55,13 @@ const ManageProducts = () => {
                   <div className="col-4">
                     <Link
                       className="btn btn-success"
-                      to={`/admin/product/update/productId`}
+                      to={`/admin/product/update/${product._id}`}
                     >
                       <span className="">Update</span>
                     </Link>
                   </div>
                   <div className="col-4">
+                    {/* TODO: Add a modal here to confirm delete */}
                     <button
                       onClick={() => deleteThisProduct(product._id)}
                       className="btn btn-danger"
