@@ -6,12 +6,11 @@ import { loadCart } from "./helper/cartHelper";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
-
-  const preload = () => {};
+  const [tiggerReload, setTiggerReload] = useState();
 
   useEffect(() => {
     setProducts(loadCart());
-  }, []);
+  }, [tiggerReload]);
 
   const loadAllProducts = () => {
     return (
@@ -24,6 +23,8 @@ const Cart = () => {
               product={product}
               addToCartButton={false}
               removefromCartButton={true}
+              setTiggerReload={setTiggerReload}
+              tiggerReload={tiggerReload}
             />
           );
         })}
