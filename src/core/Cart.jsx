@@ -3,6 +3,7 @@ import "../styles.css";
 import Base from "./Base";
 import Card from "./Card";
 import { loadCart } from "./helper/cartHelper";
+import StripeCheckout from "./StripeCheckout";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
@@ -36,6 +37,11 @@ const Cart = () => {
     return (
       <div>
         <h2>Checkout:</h2>
+        <StripeCheckout
+          products={products}
+          setTiggerReload={setTiggerReload}
+          tiggerReload={tiggerReload}
+        />
       </div>
     );
   };
