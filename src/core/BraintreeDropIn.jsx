@@ -75,6 +75,10 @@ const BraintreeDropIn = ({
       processPayment(userId, token, paymentData)
         .then((data) => {
           setInfo({ ...info, success: true, loading: false });
+          emptyCart(() => {
+            console.log("Cart emptied");
+          });
+          setTiggerReload(!tiggerReload);
         })
         .catch((err) =>
           setInfo({ ...info, error: err, loading: false, success: false })
