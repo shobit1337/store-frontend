@@ -75,6 +75,12 @@ const BraintreeDropIn = ({
       processPayment(userId, token, paymentData)
         .then((data) => {
           setInfo({ ...info, success: true, loading: false });
+          let orderData = {
+            products: products,
+            transcation_id: data.transcation.id,
+            amount: data.transcation.amount,
+          };
+          createOrder(userId, token, orderData);
           emptyCart(() => {
             console.log("Cart emptied");
           });
